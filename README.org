@@ -1,0 +1,5 @@
+* my shitty doom emacs config
+ehhh it was a good run but apparently it cant handle snippets without adding a newline
+met the same unfortunate snippets roadblock as kakoune
+might solve the problem later when time comes
+solid editor
