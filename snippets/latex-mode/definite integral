@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: definite integral
+# key: di
+# --
+\int^{$1}_{$2}

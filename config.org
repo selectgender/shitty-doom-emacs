@@ -1,0 +1,808 @@
+#+property: header-args:emacs-lisp
+#+property: header-args:elisp :results replace :exports code
+#+property: header-args :tangle no :results silent :eval no-export
+#+title: shitty ass config
+
+* init
+Controls enabled doom modules. Run =doom sync= in CLI or =M-x doom/reload= (=SPC h r r=) after modification.
+=SPC h d h= (=C-h d h= non-vim) for doom's docs. The module index helps *a lot*
+=K= (=C-c c k=) over symbol for module's docs (only works in init.el file itself)
+=gd= over symbol for exploring a module's file directory
+
+#+begin_src elisp :tangle "init.el" :noweb no-export :noweb-ref none
+  ;;; init.el -*- lexical-binding: t; -*-
+  (doom! :input
+         <<doom-init-input>>
+
+         :completion
+         <<doom-init-completion>>
+
+         :ui
+         <<doom-init-ui>>
+         :editor
+         <<doom-init-editor>>
+
+         :emacs
+         <<doom-init-emacs>>
+
+         :term
+         <<doom-init-term>>
+
+         :checkers
+         <<doom-init-checkers>>
+
+         :tools
+         <<doom-init-tools>>
+
+         :os
+         <<doom-init-os>>
+
+         :lang
+         <<doom-init-lang>>
+
+         :email
+         <<doom-init-email>>
+
+         :app
+         <<doom-init-app>>
+
+         :config
+         <<doom-init-config>>
+         )
+#+end_src
+
+** input
+#+name: doom-init-input
+#+begin_src elisp
+;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
+;;chinese
+;;japanese
+;;layout            ; auie,ctsrnm is the superior home row
+#+end_src
+
+** completion
+#+name: doom-init-completion
+#+begin_src elisp
+company           ; the ultimate code completion backend
+;;helm              ; the *other* search engine for love and life
+;;ido               ; the other *other* search engine...
+;;ivy               ; a search engine for love and life
+vertico           ; the search engine of the future
+#+end_src
+
+** ui
+#+name: doom-init-ui
+#+begin_src elisp
+;;deft              ; notational velocity for Emacs
+doom              ; what makes DOOM look the way it does
+doom-dashboard    ; a nifty splash screen for Emacs
+;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
+;;(emoji +unicode)  ; 🙂
+hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+;;hydra
+;;indent-guides     ; highlighted indent columns
+;;ligatures         ; ligatures and symbols to make your code pretty again
+;;minimap           ; show a map of the code on the side
+modeline          ; snazzy, Atom-inspired modeline, plus API
+;;nav-flash         ; blink cursor line after big motions
+;;neotree           ; a project drawer, like NERDTree for vim
+ophints           ; highlight the region an operation acts on
+(popup +defaults)   ; tame sudden yet inevitable temporary windows
+;;tabs              ; a tab bar for Emacs
+;;treemacs          ; a project drawer, like neotree but cooler
+;;unicode           ; extended unicode support for various languages
+(vc-gutter +pretty) ; vcs diff in the fringe
+vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+;;window-select     ; visually switch windows
+workspaces        ; tab emulation, persistence & separate workspaces
+;;zen               ; distraction-free coding or writing
+#+end_src
+
+** editor
+we got fancy new meow mode
+#+name: doom-init-editor
+#+begin_src elisp
+(evil +everywhere)  ; come to the dark side, we have cookies
+file-templates      ; auto-snippets for empty files
+fold                ; (nigh) universal code folding
+(format +onsave)    ; automated prettiness
+;;god               ; run Emacs commands without modifier keys
+;;lispy             ; vim for lisp, for people who don't like vim
+;;multiple-cursors  ; editing in many places at once
+;;objed             ; text object editing for the innocent
+;;parinfer          ; turn lisp into python, sort of
+;;rotate-text       ; cycle region at point between text candidates
+snippets          ; my elves. They type so I don't have to
+;;word-wrap         ; soft wrapping with language-aware indent
+#+end_src
+
+** emacs
+#+name: doom-init-emacs
+#+begin_src elisp
+dired             ; making dired pretty [functional]
+electric          ; smarter, keyword-based electric-indent
+;;ibuffer         ; interactive buffer management
+undo              ; persistent, smarter undo for your inevitable mistakes
+vc                ; version-control and Emacs, sitting in a tree
+#+end_src
+
+** term
+#+name: doom-init-term
+#+begin_src elisp
+;;eshell            ; the elisp shell that works everywhere
+;;shell             ; simple shell REPL for Emacs
+;;term              ; basic terminal emulator for Emacs
+vterm             ; the best terminal emulation in Emacs
+#+end_src
+
+** checkers
+#+name: doom-init-checkers
+#+begin_src elisp
+syntax              ; tasing you for every semicolon you forget
+;;(spell +flyspell) ; tasing you for misspelling mispelling
+;;grammar           ; tasing grammar mistake every you make
+#+end_src
+
+** tools
+pdf enabled for math hw
+#+name: doom-init-tools
+#+begin_src elisp
+;;ansible
+;;biblio            ; Writes a PhD for you (citation needed)
+;;collab            ; buffers with friends
+;;debugger          ; FIXME stepping through code, to help you add bugs
+;;direnv
+;;docker
+;;editorconfig      ; let someone else argue about tabs vs spaces
+;;ein               ; tame Jupyter notebooks with emacs
+(eval +overlay)     ; run code, run (also, repls)
+;;gist              ; interacting with github gists
+lookup              ; navigate your code and its documentation
+(lsp +eglot)        ; M-x vscode
+(magit +forge)      ; a git porcelain for Emacs
+;;make              ; run make tasks from Emacs
+;;pass              ; password manager for nerds
+pdf               ; pdf enhancements
+;;prodigy           ; FIXME managing external services & code builders
+;;rgb               ; creating color strings
+;;taskrunner        ; taskrunner for all your projects
+;;terraform         ; infrastructure as code
+;;tmux              ; an API for interacting with tmux
+tree-sitter       ; syntax and parsing, sitting in a tree...
+;;upload            ; map local to remote projects via ssh/ftp
+#+end_src
+
+** os
+#+name: doom-init-os
+#+begin_src elisp
+(:if IS-MAC macos)  ; improve compatibility with macOS
+;;tty               ; improve the terminal Emacs experience
+#+end_src
+
+** lang
+#+name: doom-init-lang
+#+begin_src elisp
+;;agda              ; types of types of types of types...
+;;beancount         ; mind the GAAP
+;;(cc +lsp)         ; C > C++ == 1
+;;clojure           ; java with a lisp
+;;common-lisp       ; if you've seen one lisp, you've seen them all
+;;coq               ; proofs-as-programs
+;;crystal           ; ruby at the speed of c
+;;csharp            ; unity, .NET, and mono shenanigans
+;;data              ; config/data formats
+;;(dart +flutter)   ; paint ui and not much else
+;;dhall
+;;elixir            ; erlang done right
+;;elm               ; care for a cup of TEA?
+emacs-lisp        ; drown in parentheses
+;;erlang            ; an elegant language for a more civilized age
+;;ess               ; emacs speaks statistics
+;;factor
+;;faust             ; dsp, but you get to keep your soul
+;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
+;;fsharp            ; ML stands for Microsoft's Language
+;;fstar             ; (dependent) types and (monadic) effects and Z3
+;;gdscript          ; the language you waited for
+;;(go +lsp)         ; the hipster dialect
+;;(graphql +lsp)    ; Give queries a REST
+;;(haskell +lsp)    ; a language that's lazier than I am
+;;hy                ; readability of scheme w/ speed of python
+;;idris             ; a language you can depend on
+;;json              ; At least it ain't XML
+;;(java +lsp)       ; the poster child for carpal tunnel syndrome
+(javascript         ; all(hope(abandon(ye(who(enter(here))))))
+ +lsp
+ +tree-sitter)
+;;julia             ; a better, faster MATLAB
+;;kotlin            ; a better, slicker Java(Script)
+;;latex             ; writing papers in Emacs has never been so fun
+;;lean              ; for folks with too much to prove
+;;ledger            ; be audit you can be
+;;lua               ; one-based indices? one-based indices
+markdown          ; writing docs for people to ignore
+;;nim               ; python + lisp at the speed of c
+;;nix               ; I hereby declare "nix geht mehr!"
+;;ocaml             ; an objective camel
+(org                ; organize your plain life in plain text
+ +pretty
+ +roam2)
+;;php               ; perl's insecure younger brother
+;;plantuml          ; diagrams for confusing people more
+;;purescript        ; javascript, but functional
+;;python            ; beautiful is better than ugly
+;;qt                ; the 'cutest' gui framework ever
+;;racket            ; a DSL for DSLs
+;;raku              ; the artist formerly known as perl6
+;;rest              ; Emacs as a REST client
+;;rst               ; ReST in peace
+;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+;;scala             ; java, but good
+;;(scheme +guile)   ; a fully conniving family of lisps
+sh                ; she sells {ba,z,fi}sh shells on the C xor
+;;sml
+;;solidity          ; do you need a blockchain? No.
+;;swift             ; who asked for emoji variables?
+;;terra             ; Earth and Moon in alignment for performance.
+(web                ; the tubes
+ +lsp
+ +tree-sitter)
+;;yaml              ; JSON, but readable
+;;zig               ; C, but simpler
+#+end_src
+
+** email
+#+name: doom-init-email
+#+begin_src elisp
+;;(mu4e +org +gmail)
+;;notmuch
+;;(wanderlust +gmail)
+#+end_src
+
+** app
+#+name: doom-init-app
+#+begin_src elisp
+;;calendar
+;;emms
+;;everywhere        ; *leave* Emacs!? You must be joking
+;;irc               ; how neckbeards socialize
+;;(rss +org)        ; emacs as an RSS reader
+;;twitter           ; twitter client https://twitter.com/vnought
+#+end_src
+
+** config
+#+name: doom-init-config
+#+begin_src elisp
+literate
+(default +bindings +smartparens)
+#+end_src
+
+* packages
+Install custom packages through declaration here. Run =doom sync= in CLI or =M-x doom/reload= (=SPC h r r=) after modification.
+
+#+begin_src elisp :tangle "packages.el"
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+#+end_src
+
+** info
+To install package:
+#+begin_src elisp
+(package! some-package)
+#+end_src
+
+Specific external repository:
+(Can also be used to override default packages)
+#+begin_src elisp
+(package! another-package
+  :recipe (:host github :repo "username/repo"))
+#+end_src
+
+Calling specific files (usually for abnormal package structure):
+#+begin_src elisp
+(package! this-package
+  :recipe (:host github :repo "username/repo"
+           :files ("some-file.el" "src/lisp/*.el")))
+#+end_src
+
+Disabling
+#+begin_src elisp
+(package! builtin-package :disable t)
+#+end_src
+
+Specific branch
+#+begin_src elisp
+(package! builtin-package :recipe (:branch "develop"))
+#+end_src
+
+Specific commit
+#+begin_src elisp
+(package! builtin-package :pin "1a2b3c4d5e")
+#+end_src
+
+Unrestricting default package to certain commit (or unpinning)
+#+begin_src elisp
+(unpin! pinned-package)
+;; ...or multiple packages
+(unpin! pinned-package another-pinned-package)
+;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
+(unpin! t)
+#+end_src
+
+** disable default snippets
+cuz i like my own better
+#+begin_src elisp :tangle "packages.el"
+(package! doom-snippets :ignore t)
+#+end_src
+** disable vim snipe
+because i like avy better
+#+begin_src elisp :tangle "packages.el"
+(package! evil-snipe :disable t)
+#+end_src
+* config
+#+begin_src emacs-lisp :tangle "config.el"
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+** identification
+some packages/programs need this
+#+begin_src emacs-lisp :tangle "config.el"
+(setq user-full-name "ivy"
+      user-mail-address "sylviaviajung@gmail.com")
+#+end_src
+
+** fonts
+*** info
+five (optional) variables for controlling fonts:
+- =doom-font= -- the primary font to use
+- =doom-variable-pitch-font= -- a non-monospace font (where applicable)
+- =doom-big-font= -- used for =doom-big-font-mode=; use this for
+presentations or streaming.
+- =doom-symbol-font= -- for symbols
+- =doom-serif-font= -- for the `fixed-pitch-serif' face
+
+See 'C-h v doom-font' for documentation and more examples of what they accept. For example:
+
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+#+end_src
+
+Can't find font?
+- Use =M-x describe-font= to look up fonts.
+- =M-x eval-region= to execute elisp code.
+- =M-x doom/reload-font= to refresh your font settings.
+If Emacs still can't find your font, it likely wasn't installed correctly. Font issues are rarely Doom issues!
+
+** theme
+Set with =doom-theme= command or manually with =load-theme=
+#+begin_src elisp :tangle "config.el"
+(setq doom-theme 'doom-feather-dark)
+#+end_src
+
+** line numbers
+=t= for normal, =nil= for none, ='relative= for relative.
+#+begin_src elisp :tangle "config.el"
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+** org directory
+Stuff where all the org shit happens
+#+begin_src elisp :tangle "config.el"
+(setq org-directory "~/dox/org/")
+#+end_src
+
+** package configuration
+*** info
+To reconfigure package, wrap it in an =after!= block so Doom doesn't do shit with it
+#+begin_src emacs-lisp
+(after! PACKAGE
+  (setq x y))
+#+end_src
+
+Exceptions:
+- Setting file/directory variables (like `org-directory')
+- Setting variables which explicitly tell you to set them before their
+package is loaded (see 'C-h v VARIABLE' to look up their documentation).
+- Setting doom variables (which start with 'doom-' or '+').
+
+=load!= for loading relative external *.el files.
+=use-package!= for configuring packages.
+=after!= for running code after a package has loaded.
+=add-load-path!= for adding relative directories to =load-path=.
+=map!= for binding new keys.
+
+Press =K= (=C-c c k= non-vim) over symbol to get its docs (only works in config.el).
+=gd= (=C-c c d=) over symbol to jump to their directory.
+=C-h o= to search up symbols (functions, variables, faces, etc.).
+
+*** magit/forge
+we figuring out this gpg authentication shit together
+FINALLY THIS FUCKING WORKS!!!!!!!!!!
+#+begin_src elisp :tangle "config.el"
+(after! forge
+  (setq auth-sources '("~/.authinfo")))
+#+end_src
+
+*** company
+only space triggered for mostly snippet based workflow
+#+begin_src elisp :tangle "config.el"
+(after! company
+  (setq company-idle-delay nil))
+#+end_src
+
+*** org
+header size time!!
+#+begin_src elisp :tangle "config.el"
+(custom-set-faces
+ '(org-level-1 ((t (:extend t :height 1.2))))
+ '(org-level-2 ((t (:extend t :height 1.1))))
+ '(org-level-3 ((t (:extend t :height 1.05))))
+ '(org-level-4 ((t (:extend t :height 1.05))))
+ '(org-level-5 ((t (:extend t :height 1.05))))
+ '(org-level-6 ((t (:extend t :height 1.05))))
+ '(org-level-7 ((t (:extend t :height 1.05))))
+ '(org-level-8 ((t (:extend t :height 1.05)))))
+#+end_src
+
+** keybinds
+*** evil
+this is basically a remake of my neovim keybonds
+yeahhh i know its an odd choice to rebind j and k.... but =s= and =f= do all the navigation for me so ya
+#+begin_src emacs-lisp :tangle "config.el"
+(map!
+ :map evil-normal-state-map
+ "j" #'evil-scroll-down
+ "k" #'evil-scroll-up
+ "l" #'find-file
+ ";" #'dired
+ ; put last because I dont use this for shit
+ "h" #'consult-ripgrep)
+#+end_src
+
+oh yeah we also want to switch windows super fast
+#+begin_src elisp :tangle "config.el"
+(map!
+ :map evil-normal-state-map
+ "C-h" #'evil-window-left
+ "C-j" #'evil-window-down
+ "C-k" #'evil-window-up
+ "C-l" #'evil-window-right)
+#+end_src
+
+*** avy
+because efficiency
+also dont need f key because its still 3 strokes and we might need s for somn else
+#+begin_src emacs-lisp :tangle "config.el"
+(map!
+ :map evil-normal-state-map
+ ; "s" #'evil-avy-goto-char-2
+ "f" #'evil-avy-goto-char)
+#+end_src
+
+** misc/QOL
+*** disable yasnippet/general newline
+it just adds a fucking newline everytime i expand a snippet I HATE IT!!!
+#+begin_src elisp :tangle "config.el"
+(setq-default mode-require-final-newline nil)
+(setq-default require-final-newline nil)
+(setq mode-require-final-newline nil)
+(setq require-final-newline nil)
+#+end_src
+* snippets
+:PROPERTIES:
+:header-args:snippet: :mkdirp yes :tangle (expand-file-name (downcase (car (last (org-get-outline-path t)))) (expand-file-name (downcase (car (last (butlast (org-get-outline-path t))))) "snippets"))
+:END:
+
+plagiarized from [[https://github.com/elken/doom/tree/master][elkens]] config for shits and giggles
+i have no idea what the properties thingy does... but it works so i wont touch it!
+
+** latex-mode
+*** fraction
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: fraction
+    # key: f
+    # --
+    \frac{$1}{$2} $0
+#+end_src
+*** square root
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: square root
+    # key: sq
+    # --
+    \sqrt{$1} $0
+#+end_src
+*** infinity
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: infinity
+    # key: in
+    # --
+    \infty $0
+#+end_src
+*** limit
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: limit
+    # key: l
+    # --
+    \lim_{$1 \to $2}
+#+end_src
+*** integral
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: integral
+    # key: i
+    # --
+    \int
+#+end_src
+*** definite integral
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: definite integral
+    # key: di
+    # --
+    \int^{$1}_{$2}
+#+end_src
+*** begin
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: begin
+    # key: b
+    # --
+    \begin{$1}
+    $0
+    \end{$1}
+#+end_src
+*** align
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: align
+    # key: align
+    # --
+    \begin{align*}
+    $0
+    \end{align*}
+#+end_src
+** org-mode
+*** .yas-parent
+we need some of that latex in our life :P
+#+begin_src snippet
+latex-mode
+#+end_src
+*** title
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: title
+    # key: ti
+    # --
+    ,#+title: $1
+    ,#+author: ${2:Ivy}
+    ,#+date: ${3:`(format-time-string "%Y-%m-%d")`}
+    $0
+#+end_src
+*** checkbox
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: checkbox
+    # key: c
+    # --
+    - [ ] $0
+#+end_src
+*** todo
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: todo
+    # key: td
+    # --
+    TODO $1 [ ]
+    $0
+#+end_src
+*** link
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: link
+    # key: l
+    # --
+    [[$1][$2]]$0
+#+end_src
+*** src
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: src
+    # key: s
+    # --
+    ,#+begin_src $1
+      $0
+    ,#+end_src
+#+end_src
+*** tangle
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: tangle
+    # key: t
+    # --
+    ,#+begin_src elisp :tangle $1
+      $0
+    ,#+end_src
+#+end_src
+** js-mode
+*** const
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: const
+    # key: c
+    # --
+    const $0
+#+end_src
+*** var
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: var
+    # key: v
+    # --
+    var $0
+#+end_src
+*** async
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: const
+    # key: c
+    # --
+    async $0
+#+end_src
+*** export
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: export
+    # key: e
+    # --
+    export $0
+#+end_src
+*** return
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: return
+    # key: r
+    # --
+    return $0
+#+end_src
+*** private
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: private
+    # key: pr
+    # --
+    private $0
+#+end_src
+*** public
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: public
+    # key: pu
+    # --
+    public $0
+#+end_src
+*** if
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: if
+    # key: i
+    # --
+    if ($1) {
+      $0
+    }
+#+end_src
+*** function
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: function
+    # key: f
+    # --
+    function ${1:name}(${2:param}) {
+      $0
+    }
+#+end_src
+*** fori
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: fori
+    # key: fi
+    # --
+    for (let i = $1; i < $2; i++) {
+      $0
+    }
+#+end_src
+** typescript-mode
+some of these snippets involve [[https://fireboltofdeath.dev/docs/flamework/][flamework]] so if u dont know what that is dont worry
+
+*** .yas-parent
+we inheriting from js btw!!!
+#+begin_src snippet
+js-mode
+#+end_src
+
+*** type
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: type
+    # key: t
+    # --
+    type $0
+#+end_src
+*** interface
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: interface
+    # key: i
+    # --
+    interface $0
+#+end_src
+*** flamework service
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: flamework_service
+    # key: FS
+    # --
+	import { Service, OnInit, OnStart } from "@flamework/core";
+
+	@Service()
+	export class ${1:MyService} implements OnInit, OnStart {
+		onInit() {
+			$0
+        }
+
+		onStart() {
+
+		}
+	}
+#+end_src
+*** flamework controller
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: flamework_controller
+    # key: FC
+    # --
+	import { Controller, OnInit, OnStart } from "@flamework/core";
+
+	@Controller()
+	export class ${1:MyController} implements OnInit, OnStart {
+		onInit() {
+			$0
+        }
+
+		onStart() {
+
+		}
+	}
+#+end_src
+*** flamework component
+#+begin_src snippet
+    # -*- mode: snippet -*-
+    # name: flamework_component
+    # key: FM
+    # --
+	import { OnInit, OnStart } from "@flamework/core";
+	import { Component, BaseComponent } from "@flamework/components";
+
+	@Component()
+	export class ${1:MyComponent} extends BaseComponent implements OnInit, OnStart {
+		onInit() {
+			$0
+		}
+
+		onStart() {
+
+		}
+	}
+#+end_src
+
+** typescript-tsx-mode
+*** .yas-parent
+we inheriting from ts btw!!!
+#+begin_src snippet
+typescript-mode
+#+end_src

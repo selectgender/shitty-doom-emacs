@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: flamework_service
+# key: FS
+# --
+	import { Service, OnInit, OnStart } from "@flamework/core";
+
+	@Service()
+	export class ${1:MyService} implements OnInit, OnStart {
+		onInit() {
+			$0
+    }
+
+		onStart() {
+
+		}
+	}

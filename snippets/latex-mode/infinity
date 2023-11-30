@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: infinity
+# key: in
+# --
+\infty $0

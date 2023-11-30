@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: tangle
+# key: t
+# --
+#+begin_src elisp :tangle $1
+  $0
+#+end_src

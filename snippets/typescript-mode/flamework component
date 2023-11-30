@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: flamework_component
+# key: FM
+# --
+	import { OnInit, OnStart } from "@flamework/core";
+	import { Component, BaseComponent } from "@flamework/components";
+
+	@Component()
+	export class ${1:MyComponent} extends BaseComponent implements OnInit, OnStart {
+		onInit() {
+			$0
+		}
+
+		onStart() {
+
+		}
+	}

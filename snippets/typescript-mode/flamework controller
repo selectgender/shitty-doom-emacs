@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: flamework_controller
+# key: FC
+# --
+	import { Controller, OnInit, OnStart } from "@flamework/core";
+
+	@Controller()
+	export class ${1:MyController} implements OnInit, OnStart {
+		onInit() {
+			$0
+    }
+
+		onStart() {
+
+		}
+	}
